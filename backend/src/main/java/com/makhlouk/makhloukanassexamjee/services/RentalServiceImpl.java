@@ -163,7 +163,6 @@ public class RentalServiceImpl implements RentalService {
         Location loc = locationRepository.findById(locationId)
                 .orElseThrow(() -> new RuntimeException("Location not found"));
         loc.setStatut(StatutLocation.TERMINEE);
-        // Free the vehicle
         if (loc.getVehicule() != null) {
             loc.getVehicule().setStatut(StatutVehicule.DISPONIBLE);
             vehiculeRepository.save(loc.getVehicule());
